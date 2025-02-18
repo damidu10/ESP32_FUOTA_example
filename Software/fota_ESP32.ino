@@ -33,7 +33,7 @@ void init_wifi(void);
 void connect_to_wifi_network(void);
 void verify_wifi_connection(void);
 String search_for_string_in_http_header(String header_http, String string_to_search);
-void init_FUOTA(String host_http, String firware_filename);
+void init_FUOTA(String host_http, String firmware_filename);
 unsigned long calculate_time_difference(unsigned long t_ref);
 
 /* Function: init wi-fi connection
@@ -95,7 +95,7 @@ String search_for_string_in_http_header(String header_http, String string_to_sea
                - Firmware filename
    Return: nothing
 */
-void init_FUOTA(String host_http, String firware_filename) 
+void init_FUOTA(String host_http, String firmware_filename) 
 {
     unsigned long timeout_fw_FUOTA = 0;
     String http_line = "";
@@ -116,7 +116,7 @@ void init_FUOTA(String host_http, String firware_filename)
      
         /* Obtain information of firmware to be downloaded (via HTTP GET request)
            and download it */   
-        espClient.print(String("GET ") + firware_filename + " HTTP/1.1\r\n" +
+        espClient.print(String("GET ") + firmware_filename + " HTTP/1.1\r\n" +
                        "Host: " + host_http + "\r\n" +
                        "Cache-Control: no-cache\r\n" +
                        "Connection: close\r\n\r\n");
